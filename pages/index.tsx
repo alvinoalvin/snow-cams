@@ -1,13 +1,15 @@
-import { Button, Group } from "@mantine/core";
+import { WebCam } from "../components/WebCam";
 
 export default function IndexPage() {
   return (
     <div>
-      <iframe
+      <WebCam
         className="aspect-video h-auto w-full"
         src="https://www.skaping.com/cypress-mountain/mount-strachan"
         loading="lazy"
         title="Sky Chair Camera"
+        mountain="Cypress"
+        type="iframe"
       />
       <iframe
         src="https://relay.ozolio.com//pub.api?cmd=explore&amp;oid=CID_YBLM00000045&amp;channel=0"
