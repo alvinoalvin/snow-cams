@@ -16,5 +16,7 @@ model Cams {
   mountain String? 
   type  String?
   link String?
+  
+  @@unique([title, mountain])
 }
 
