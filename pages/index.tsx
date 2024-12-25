@@ -21,7 +21,6 @@ export default function IndexPage({ cams }: any) {
             <WebCam
               className="aspect-video h-auto w-full"
               src={cam.link}
-              loading="lazy"
               title={cam.title}
               mountain={cam.mountain}
               type={cam.type}

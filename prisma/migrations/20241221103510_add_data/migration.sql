@@ -48,22 +48,22 @@ INSERT INTO Cams
 VALUES('Mystery Peak Webcam  Vancouver, BC', 'Seymour', 'iframe', " https://www.youtube.com/embed/vLawo-FrBKk");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Valley', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/Valley.jpg?timestamp=1733291712");
+VALUES('Valley', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/Valley.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Village Day Lodge Slopeside', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/Village%20Day%20Lodge%20Slopeside.jpg?timestamp=1733291714");
+VALUES('Village Day Lodge Slopeside', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/Village%20Day%20Lodge%20Slopeside.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Elevation Chairlift', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/ele_view_of_morrisey.jpg?timestamp=1733291705");
+VALUES('Elevation Chairlift', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/ele_view_of_morrisey.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Sundance Chairlift', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/sundance.jpg?timestamp=1733291710");
+VALUES('Sundance Chairlift', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/sundance.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Orient Quad Base', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/sundance.jpg?timestamp=1733291710");
+VALUES('Orient Quad Base', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/sundance.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Mt. Tod, View from Mt. Morrisey', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/view%20of%20mt%20todd.jpg?timestamp=1733291713");
+VALUES('Mt. Tod, View from Mt. Morrisey', 'Sun Peaks', 'image', " https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/view%20of%20mt%20todd.jpg");
 INSERT INTO Cams
   (title, mountain, "type", link)
-VALUES('Village Clock Tower', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webCams/Village%20Clock%20Tower.jpg?timestamp=1733291713");
+VALUES('Village Clock Tower', 'Sun Peaks', 'image', "https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/Village%20Clock%20Tower.jpg");
