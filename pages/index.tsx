@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import { WebCam } from "../components/WebCam";
 import { PrismaClient } from "@prisma/client";
-import { Grid } from "@mantine/core";
-
+import {  Grid } from "@mantine/core";
 interface ICam {
   id: number;
   title: string;
@@ -14,10 +12,14 @@ export default function IndexPage({ cams }: any) {
   return cams.length <= 0 ? (
     <>Loading...</>
   ) : (
-    <Grid gutter={"md"}>
+    <Grid
+      gutter={{ base: 5, xs: "md", md: "xl", xl: 50 }}
+      w={{xs:"80%", md: "100%", lg: "85%", xl: "80%" }}
+      m="auto"
+    >
       {cams.map((cam: ICam) => {
         return (
-          <Grid.Col key={cam.id} span={4}>
+          <Grid.Col key={cam.id} span={{ sm: 12, md: 6, xl: 4 }}>
             <WebCam
               className="aspect-video h-auto w-full"
               src={cam.link}

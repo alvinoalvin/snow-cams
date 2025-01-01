@@ -1,5 +1,9 @@
 INSERT INTO Cams
   (title, mountain, "type", link)
+VALUES
+  ('Top Of Skychair', 'Cypress', 'iframe', "https://www.skaping.com/cypress-mountain/mount-strachan");
+INSERT INTO Cams
+  (title, mountain, "type", link)
 VALUES('Plaza Cam', 'Cypress', 'iframe', "https://www.youtube.com/embed/OSKgIDnBwwQ");
 INSERT INTO Cams
   (title, mountain, "type", link)
