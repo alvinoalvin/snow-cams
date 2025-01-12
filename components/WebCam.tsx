@@ -1,5 +1,6 @@
 import { IframeHTMLAttributes } from "react";
 import { Card, Image, Title } from "@mantine/core";
+import { WebCamIframe } from "./WebCamIframe";
 interface WebCamProps extends IframeHTMLAttributes<HTMLIFrameElement> {
   type: "iframe" | "image";
   title: string;
@@ -12,13 +13,19 @@ export const WebCam = (props: WebCamProps) => {
   return (
     <Card shadow="md" padding="sm" radius="md" withBorder w="30em" h={"30em"}>
       {props.type === "iframe" ? (
-        <iframe
+        <WebCamIframe
           className={props.className}
           src={String.raw`${props.src}`}
           height="100%"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           loading="lazy"
+          allowfullscreen=""
+          frameborder="0"
+          referrerpolicy="origin"
+          align="center"
         />
+        
+        
       ) : (
         <Image
           className={props.className}
