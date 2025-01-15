@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 .DS_Store
+
+# prisma generated files 
+prisma/generated/

@@ -7,13 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build"
+    "postinstall": "npx prisma generate",
+    "vercel-build": "npx prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@mantine/core": "7.14.1",
     "@mantine/hooks": "7.14.1",
-    "firebase": "^11.0.2",
     "next": "15.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1"
