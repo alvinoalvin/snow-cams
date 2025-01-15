@@ -22,7 +22,6 @@ export const WebCam = (props: WebCamProps) => {
           allowFullScreen={true}
           frameborder="0"
           referrerpolicy="origin"
-          align="center"
         />
       ) : (
         <Image
