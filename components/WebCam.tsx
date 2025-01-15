@@ -19,13 +19,11 @@ export const WebCam = (props: WebCamProps) => {
           height="100%"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           loading="lazy"
-          allowfullscreen=""
+          allowFullScreen={true}
           frameborder="0"
           referrerpolicy="origin"
           align="center"
         />
-        
-        
       ) : (
         <Image
           className={props.className}

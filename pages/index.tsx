@@ -1,6 +1,8 @@
 import { WebCam } from "../components/WebCam";
 import { PrismaClient } from "@prisma/client";
-import {  Grid } from "@mantine/core";
+import { Grid } from "@mantine/core";
+import { useMst } from "../lib/hooks/useMst";
+import { useEffect } from "react";
 interface ICam {
   id: number;
   title: string;
@@ -9,12 +11,19 @@ interface ICam {
   link: string;
 }
 export default function IndexPage({ cams }: any) {
+  /* Test use MST  */
+  // const { webcamStore } = useMst();
+  // useEffect(() => {
+  //   webcamStore.getInitialCams();
+  // }, []);
+  // cams = webcamStore.webcams;
+
   return cams.length <= 0 ? (
     <>Loading...</>
   ) : (
     <Grid
       gutter={{ base: 5, xs: "md", md: "xl", xl: 50 }}
-      w={{xs:"80%", md: "100%", lg: "85%", xl: "80%" }}
+      w={{ xs: "80%", md: "100%", lg: "85%", xl: "80%" }}
       m="auto"
     >
       {cams.map((cam: ICam) => {
