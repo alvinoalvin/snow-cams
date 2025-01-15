@@ -1,15 +1,50 @@
-import { Button, Group } from "@mantine/core";
+import { WebCam } from "../components/WebCam";
+import { PrismaClient } from "@prisma/client";
+import { Grid } from "@mantine/core";
+import { useMst } from "../lib/hooks/useMst";
+import { useEffect } from "react";
+interface ICam {
+  id: number;
+  title: string;
+  mountain: string;
+  type: "iframe" | "image";
+  link: string;
+}
+export default function IndexPage({ cams }: any) {
+  /* Test use MST  */
+  // const { webcamStore } = useMst();
+  // useEffect(() => {
+  //   webcamStore.getInitialCams();
+  // }, []);
+  // cams = webcamStore.webcams;
 
-export default function IndexPage() {
-  return (
-    <Group mt={50} justify="center">
-      <Button size="xl">Welcome to Mantine!</Button>
-      <iframe
-        className="aspect-video h-auto w-full"
-        src="https://www.skaping.com/cypress-mountain/mount-strachan"
-        loading="lazy"
-        title="Sky Chair Camera"
-      ></iframe>
-    </Group>
+  return cams.length <= 0 ? (
+    <>Loading...</>
+  ) : (
+    <Grid
+      gutter={{ base: 5, xs: "md", md: "xl", xl: 50 }}
+      w={{ xs: "80%", md: "100%", lg: "85%", xl: "80%" }}
+      m="auto"
+    >
+      {cams.map((cam: ICam) => {
+        return (
+          <Grid.Col key={cam.id} span={{ sm: 12, md: 6, xl: 4 }}>
+            <WebCam
+              className="aspect-video h-auto w-full"
+              src={cam.link}
+              title={cam.title}
+              mountain={cam.mountain}
+              type={cam.type}
+            />
+          </Grid.Col>
+        );
+      })}
+    </Grid>
   );
+}
+
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+  const cams = await prisma.cams.findMany();
+  return { props: { cams } };
 }
