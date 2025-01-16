@@ -21,4 +21,4 @@ INSERT INTO "Cams"(title, mountain, type, link) VALUES('Elevation Chairlift', 'S
 INSERT INTO "Cams"(title, mountain, type, link) VALUES('Sundance Chairlift', 'Sun Peaks', 'image', 'https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/sundance.jpg');
 INSERT INTO "Cams"(title, mountain, type, link) VALUES('Orient Quad Base', 'Sun Peaks', 'image', 'https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/sundance.jpg');
 INSERT INTO "Cams"(title, mountain, type, link) VALUES('Mt. Tod, View from Mt. Morrisey', 'Sun Peaks', 'image', ' https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/view%20of%20mt%20todd.jpg');
-INSERT INTO "Cams"(title, mountain, type, link) VALUES('Village Clock Tower', 'Sun Peaks', 'image', 'https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/Village%20Clock%20Tower.jp');
+INSERT INTO "Cams"(title, mountain, type, link) VALUES('Village Clock Tower', 'Sun Peaks', 'image', 'https://www.sunpeaksresort.com/sites/default/files/spr_website_data/webcams/Village%20Clock%20Tower.jpg');
