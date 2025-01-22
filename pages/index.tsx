@@ -1,8 +1,18 @@
 import { WebCam } from "../components/WebCam";
 import { PrismaClient } from "@prisma/client";
 import { Grid } from "@mantine/core";
-import { useMst } from "../lib/hooks/useMst";
-import { useEffect } from "react";
+import { Pool, neonConfig } from '@neondatabase/serverless'
+import { PrismaNeon } from '@prisma/adapter-neon'
+import dotenv from 'dotenv'
+import ws from 'ws'
+
+dotenv.config()
+neonConfig.webSocketConstructor = ws
+const connectionString = `${process.env.DATABASE_URL}`
+
+const pool = new Pool({ connectionString })
+const adapter = new PrismaNeon(pool)
+
 interface ICam {
   id: number;
   title: string;
