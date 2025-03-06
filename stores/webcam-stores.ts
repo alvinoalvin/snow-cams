@@ -3,17 +3,16 @@ import { withRootStore } from "../lib/with-root-store";
 import { WebcamModel } from "../model/webcam";
 import { PrismaClient } from "@prisma/client";
 
-export const WebcamStoreModel = types
-  .model("WebcamStoreModel")
+export const WebcamStore = types
+  .model("WebcamStore")
   .props({
     webcams: types.array(WebcamModel),
   })
   .extend(withRootStore())
   .views((self) => ({}))
   .actions((self) => ({
-    getInitialCams() {
-      /* TODO Axios request to api */
+    getInitalCams() {
     },
   }));
 
-export interface IWebcamStoreModel extends Instance<typeof WebcamStoreModel> {}
+export interface IWebcamStore extends Instance<typeof WebcamStore> {}

@@ -1,18 +1,18 @@
 import { WebCam } from "../components/WebCam";
 import { PrismaClient } from "@prisma/client";
-import { Grid, TextInput } from "@mantine/core";
+import { Grid, Select } from "@mantine/core";
 import { Pool, neonConfig } from "@neondatabase/serverless";
-import { PrismaNeon } from "@prisma/adapter-neon";
 import dotenv from "dotenv";
 import ws from "ws";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import { getUniques } from "../lib/helpers/toolbox";
+import { useMst } from "../lib/hooks/useMst";
 
 dotenv.config();
 neonConfig.webSocketConstructor = ws;
 const connectionString = `${process.env.DATABASE_URL}`;
 
 const pool = new Pool({ connectionString });
-const adapter = new PrismaNeon(pool);
 
 interface ICam {
   link: string;
@@ -23,14 +23,30 @@ interface ICam {
 }
 export default function IndexPage({ cams }: any) {
   /* Test use MST  */
-  const [filteredCams, setFilteredCams] = useState(cams);
+  let { webcamStore } = useMst();
+  webcamStore.getInitalCams();
+  // const [searchedCams, setSearchedCams] = useState(cams);
+  const [filteredCams, setFilteredCams] = useState([cams]);
+  const mountainOptions: Array<string> = getUniques(
+    cams.map((cam: ICam) => cam.mountain)
+  );
 
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setFilteredCams(
-      cams.filter((cam: ICam) =>
-        cam.mountain.toLowerCase().includes(e.target.value.toLowerCase())
-      )
-    );
+  // const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setSearchedCams(
+  //     cams.filter((cam: ICam) =>
+  //       cam.mountain.toLowerCase().includes(e.target.value.toLowerCase())
+  //     )
+  //   );
+  // };
+
+  const handleFilter = (filterValue: string | null) => {
+    !filterValue
+      ? setFilteredCams([])
+      : setFilteredCams(
+          cams.filter((cam: ICam) =>
+            cam.mountain.toLowerCase().includes(filterValue.toLowerCase())
+          )
+        );
   };
   return cams.length <= 0 ? (
     <>Loading...</>
@@ -42,10 +58,21 @@ export default function IndexPage({ cams }: any) {
         m="auto"
       >
         <Grid.Col span={12}>
-          <TextInput
+          {/* <TextInput
+            id="cam-search-input"
             placeholder="Search..."
             w={"12.5rem"}
             onChange={(e) => handleSearch(e)}
+          /> */}
+          <Select
+            id="cam-search-select"
+            data={["All", ...mountainOptions]}
+            defaultValue={"All"}
+            onChange={(_value) => {
+              _value === "All"
+                ? setFilteredCams(filteredCams)
+                : handleFilter(_value);
+            }}
           />
         </Grid.Col>
         {filteredCams.map((cam: ICam) => {
