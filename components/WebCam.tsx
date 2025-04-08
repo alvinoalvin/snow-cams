@@ -22,7 +22,7 @@ export const WebCam = (props: WebCamProps) => {
           loading="lazy"
           allowFullScreen={true}
           frameBorder="0"
-          referrerpolicy="origin"
+          referrerPolicy="origin"
         />
       ) : (
         <Image
