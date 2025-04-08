@@ -1,12 +1,12 @@
 import { IStateTreeNode, types } from "mobx-state-tree";
-import { WebcamStoreModel, IWebcamStoreModel } from "./webcam-stores";
+import { WebcamStore, IWebcamStore } from "./webcam-stores";
 export const RootStoreModel = types
   .model("RootStoreModel")
   .props({
-    webcamStore: types.optional(WebcamStoreModel, {}),
+    webcamStore: types.optional(WebcamStore, {}),
   })
   .actions((self) => ({}));
 
 export interface IRootStore extends IStateTreeNode {
-  webcamStore: IWebcamStoreModel;
+  webcamStore: IWebcamStore;
 }

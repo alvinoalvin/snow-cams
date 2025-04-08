@@ -2,7 +2,7 @@ import { IframeHTMLAttributes } from "react";
 
 interface WebCamIframeProps extends IframeHTMLAttributes<HTMLIFrameElement> {
   allowFullScreen?: boolean | undefined;
-  frameborder?: string;
+  frameBorder?: string;
   referrerpolicy?: string;
   align?: string;
 }

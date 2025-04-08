@@ -4,7 +4,7 @@ import { Instance, types } from "mobx-state-tree";
 export const WebcamModel: any = types
   .model("WebcamModel")
   .props({
-    id: types.identifier,
+    id: types.number,
     title: types.string,
     mountain: types.string,
     type: types.union(types.literal("iframe"), types.literal("image")),
