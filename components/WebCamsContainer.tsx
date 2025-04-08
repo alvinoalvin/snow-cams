@@ -1,7 +1,7 @@
 import { WebCam, WebCamProps } from "../components/WebCam";
 import { Grid, Select } from "@mantine/core";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUniques } from "../lib/helpers/toolbox";
 import { IWebcamModel } from "../model/webcam";
 import { observer } from "mobx-react-lite";
@@ -10,14 +10,18 @@ import { useMst } from "../lib/hooks/useMst";
 export const WebCamsContainer = observer(() => {
   /* Test use MST  */
   let { webcamStore } = useMst();
-
   let webcams = Array.from(webcamStore.webcams);
 
   // const   [searchedCams, setSearchedCams] = useState(cams);
-  const [filteredCams, setFilteredCams] = useState(webcams);
+  const [filteredCams, setFilteredCams] = useState([] as Array<WebCamProps>);
   const mountainOptions: Array<string> = getUniques(
     webcams.map((cam: WebCamProps) => cam.mountain)
   );
+
+  // Hack to set initial filteredCams as webcams declared after inital render
+  useEffect(() => {
+    filteredCams.length == 0 && setFilteredCams(webcams);
+  }, [webcams]);
 
   // const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
   //   setSearchedCams(
@@ -26,7 +30,6 @@ export const WebCamsContainer = observer(() => {
   //     )
   //   );
   // };
-  console.log(filteredCams);
 
   const handleFilter = (filterValue: string | null) => {
     console.log("handlefilter: ", filterValue);
@@ -38,8 +41,6 @@ export const WebCamsContainer = observer(() => {
           )
         );
   };
-
-  console.log("bleh: ", filteredCams);
 
   return (
     <Grid
