@@ -1,7 +1,6 @@
 import { Instance, types } from "mobx-state-tree";
 import { withRootStore } from "../lib/with-root-store";
 import { IWebcamModel, WebcamModel } from "../model/webcam";
-import { PrismaClient } from "@prisma/client";
 import axios from "axios";
 
 export const WebcamStore = types
@@ -14,7 +13,7 @@ export const WebcamStore = types
   .actions((self) => ({
     async getInitalCams(): Promise<void> {
       axios
-        .get("http://localhost:3000/api/webcams")
+        .get("/api/webcams")
         .then((res) => {
           // self.webcams.replace(res.data as IWebcamModel);
           this.setWebcams(res.data as IWebcamModel);
