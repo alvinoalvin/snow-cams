@@ -28,10 +28,24 @@ export class WebCamController {
     }
   }
   async getAllWebcams() {
+    if (this.req.query.mountain) {
+      return this.getWebcamsForMountain(this.req.query.mountain as string);
+    }
+
     const webcams = await this.prisma.cams.findMany();
-    console.log("these are the webcams:", webcams);
     return this.res.status(200).json(webcams);
   }
 
-  getCamsForMountain(mountain: string) {}
+  async getWebcamsForMountain(mountain: string) {
+    const webcams = await this.prisma.cams.findMany({
+      where: {
+        mountain: {
+          contains: mountain,
+          mode: "insensitive",
+        },
+      },
+    });
+    return this.res.status(200).json(webcams);
+  }
+
 }

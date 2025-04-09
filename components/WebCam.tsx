@@ -1,11 +1,12 @@
 import { IframeHTMLAttributes } from "react";
 import { Card, Image, Title } from "@mantine/core";
 import { WebCamIframe } from "./WebCamIframe";
-interface WebCamProps extends IframeHTMLAttributes<HTMLIFrameElement> {
-  type: "iframe" | "image";
+export interface WebCamProps extends IframeHTMLAttributes<HTMLIFrameElement> {
+  link: string;
   title: string;
+  camId: number;
   mountain: string;
-  src: string;
+  type: "iframe" | "image";
 }
 
 export const WebCam = (props: WebCamProps) => {
@@ -15,19 +16,19 @@ export const WebCam = (props: WebCamProps) => {
       {props.type === "iframe" ? (
         <WebCamIframe
           className={props.className}
-          src={String.raw`${props.src}`}
+          src={String.raw`${props.link}`}
           height="100%"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           loading="lazy"
           allowFullScreen={true}
-          frameborder="0"
-          referrerpolicy="origin"
+          frameBorder="0"
+          referrerPolicy="origin"
         />
       ) : (
         <Image
           className={props.className}
           src={
-            props.src +
+            props.link +
             "?timestamp=" +
             String(imgTime.getTime()).substring(0, 10)
           }
