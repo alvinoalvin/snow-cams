@@ -10,7 +10,7 @@ import { useMst } from "../lib/hooks/useMst";
 export const WebCamsContainer = observer(() => {
   /* Test use MST  */
   let { webcamStore } = useMst();
-  let webcams = Array.from(webcamStore.webcams);
+  let webcams = webcamStore.webcams;
 
   // const   [searchedCams, setSearchedCams] = useState(cams);
   const [filteredCams, setFilteredCams] = useState([] as Array<WebCamProps>);
@@ -20,7 +20,7 @@ export const WebCamsContainer = observer(() => {
 
   // Hack to set initial filteredCams as webcams declared after inital render
   useEffect(() => {
-    filteredCams.length == 0 && setFilteredCams(webcams);
+    if (filteredCams.length === 0) setFilteredCams(webcams);
   }, [webcams]);
 
   // const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,9 +32,8 @@ export const WebCamsContainer = observer(() => {
   // };
 
   const handleFilter = (filterValue: string | null) => {
-    console.log("handlefilter: ", filterValue);
     !filterValue
-      ? setFilteredCams([])
+      ? setFilteredCams(webcams)
       : setFilteredCams(
           webcams.filter((cam: WebCamProps) =>
             cam.mountain.toLowerCase().includes(filterValue.toLowerCase())

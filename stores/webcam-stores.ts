@@ -15,7 +15,6 @@ export const WebcamStore = types
       axios
         .get("/api/webcams")
         .then((res) => {
-          // self.webcams.replace(res.data as IWebcamModel);
           this.setWebcams(res.data as IWebcamModel);
         })
         .catch((err) => {
