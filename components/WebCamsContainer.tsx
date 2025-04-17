@@ -1,5 +1,5 @@
 import { WebCam, WebCamProps } from "../components/WebCam";
-import { Grid, Select, Image, Box } from "@mantine/core";
+import { Grid, Select, Image, Box, Flex } from "@mantine/core";
 
 import { useEffect, useState } from "react";
 import { getUniques } from "../lib/helpers/toolbox";
@@ -42,10 +42,7 @@ export const WebCamsContainer = observer(() => {
   };
 
   return (
-    <Grid
-      w={{ xl: "90%", md: "95%", sm: "100%" }}
-      m={"auto"}
-    >
+    <Grid w={{ xl: "90%", md: "95%", sm: "100%" }} m={"auto"}>
       <Grid.Col span={12} m="auto">
         <Box id="logo" m="2rem auto" w="25rem">
           <Image src="/imgs/logo.png" alt="Snow Cams " />
@@ -56,8 +53,9 @@ export const WebCamsContainer = observer(() => {
             w={"12.5rem"}
             onChange={(e) => handleSearch(e)}
           /> */}
-        <Box className="filterForm">
+        <Flex className="filterForm">
           <Select
+            label="Filter by mountain"
             w="20rem"
             m="auto"
             id="cam-search-select"
@@ -67,7 +65,7 @@ export const WebCamsContainer = observer(() => {
               _value == "All" ? setFilteredCams(webcams) : handleFilter(_value);
             }}
           />
-        </Box>
+        </Flex>
       </Grid.Col>
       {webcams.length <= 0 ? (
         <>Loading...</>
