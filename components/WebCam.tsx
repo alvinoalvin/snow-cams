@@ -12,7 +12,15 @@ export interface WebCamProps extends IframeHTMLAttributes<HTMLIFrameElement> {
 export const WebCam = (props: WebCamProps) => {
   const imgTime = new Date();
   return (
-    <Card shadow="md" padding="sm" radius="md" withBorder w="30em" h={"30em"}>
+    <Card
+      shadow="md"
+      padding="sm"
+      radius="md"
+      withBorder
+      h={{ lg: "30em", md: "28em", sm: "25em", xs: "22.5em" }}
+      w={{ lg: "30em", md: "28em", sm: "25em", xs: "22.5em" }}
+      m="auto"
+    >
       {props.type === "iframe" ? (
         <WebCamIframe
           className={props.className}
@@ -28,7 +36,7 @@ export const WebCam = (props: WebCamProps) => {
         <Image
           className={props.className}
           src={
-            props.link +
+            props.link + 
             "?timestamp=" +
             String(imgTime.getTime()).substring(0, 10)
           }
